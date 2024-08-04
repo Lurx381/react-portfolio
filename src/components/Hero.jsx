@@ -1,4 +1,3 @@
-// components/Hero.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
 import HeroImage from '../assets/lukabild.jpg';
@@ -9,6 +8,14 @@ const fadeIn = {
 };
 
 const Hero = () => {
+  // Scroll to the element with the specified ID
+  const scrollToContent = () => {
+    const element = document.getElementById('contact');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <motion.div
       id="home"
@@ -33,7 +40,10 @@ const Hero = () => {
         an IT Student that thrives to get better.
       </p>
       <div className="mt-8 space-x-4">
-        <button className="bg-gradient-to-r from-green-400 to-blue-500 text-white transform transition-transform duration-300 hover:scale-105 px-4 py-2 rounded-full">
+        <button 
+          className="bg-gradient-to-r from-green-400 to-blue-500 text-white transform transition-transform duration-300 hover:scale-105 px-4 py-2 rounded-full"
+          onClick={scrollToContent} // Add the onClick handler
+        >
           Contact Me
         </button>
       </div>
