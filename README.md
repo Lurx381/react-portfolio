@@ -1,1 +1,3 @@
-# react-portfolio
+# Portfolio Website using React, TailwindCSS & Vite
+
+In progress...
