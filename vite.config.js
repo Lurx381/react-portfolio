@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  assetsInclude: ['**/*.gltf'], // Include .gltf files
+  assetsInclude: ['**/*.gltf', '**/*.pdf'], // Include .gltf and .pdf files
 });

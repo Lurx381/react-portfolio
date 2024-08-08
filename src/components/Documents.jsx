@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Document1 from '../assets/IMS_Projekt-Abstract_Discord_Bot.pdf'; // Ensure this is a PDF file
+
+// Define project data
+const projects = [
+  { id: 1, title: 'Discord Bot Pixy', description: 'This innovative Discord Bot with all types of commands available and more in future is Bot that every Discord Server will want to have in the future!', fileUrl: Document1 },
+];
 
 const Documents = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -49,12 +55,12 @@ const Documents = () => {
     navigate('/'); // Navigate to the home page
   };
 
+  const handleReadMore = (fileUrl) => {
+    window.open(fileUrl, '_blank');
+  };
+
   const loadDocuments = () => {
-    // Load documents here (dummy data for now)
-    setDocuments([
-      { id: 1, title: 'Sample Document 1', description: 'This is a description of the first sample document.' },
-      { id: 2, title: 'Sample Document 2', description: 'This is a description of the second sample document.' }
-    ]);
+    setDocuments(projects); // Load documents from the projects constant
   };
 
   return (
@@ -64,15 +70,21 @@ const Documents = () => {
           <h2 className="text-3xl font-bold text-center mb-6">My Documents</h2>
           <div className="space-y-6">
             {documents.map(doc => (
-              <div key={doc.id} className="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <div key={doc.id} className="bg-gradient-animation p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow relative">
                 <h3 className="text-xl font-semibold mb-2">{doc.title}</h3>
-                <p className="text-gray-400">{doc.description}</p>
+                <p className="text-gray-400 mb-8">{doc.description}</p>
+                <button
+                  onClick={() => handleReadMore(doc.fileUrl)}
+                  className="button-animation absolute bottom-4 right-4 bg-gradient-to-r from-green-400 to-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition-colors"
+                >
+                  Read More
+                </button>
               </div>
             ))}
           </div>
           <button
             onClick={handleGoToHome}
-            className="hover:bg-blue-600 transition-colors mt-4 bg-gray-700 text-white px-4 py-2 rounded-full"
+            className="button-animation hover:bg-gradient-to-r from-green-400 to-blue-500 transition-colors mt-4 bg-gray-700 text-white px-4 py-2 rounded-full"
           >
             Go to Home
           </button>
@@ -103,7 +115,7 @@ const Documents = () => {
             </div>
             <button
               type="submit"
-              className="hover:bg-blue-600 w-full bg-gradient-to-r from-green-400 to-blue-500 text-white px-4 py-2 rounded-full"
+              className="button-animation hover:bg-gradient-to-r from-green-400 to-blue-500 w-full bg-gradient-to-r from-green-400 to-blue-500 text-white px-4 py-2 rounded-full"
               disabled={loginAttempts >= 7}
             >
               Login
@@ -117,7 +129,7 @@ const Documents = () => {
           </form>
           <button
             onClick={handleGoBack}
-            className="hover:bg-blue-600 w-full mt-4 bg-gray-700 text-white px-4 py-2 rounded-full"
+            className="button-animation hover:bg-gradient-to-r from-green-400 to-blue-500 w-full mt-4 bg-gray-700 text-white px-4 py-2 rounded-full"
           >
             Go Back
           </button>

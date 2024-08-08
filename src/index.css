@@ -64,3 +64,34 @@ body {
         box-shadow: none !important; /* Reset any box-shadow effects */
     }
 }
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+  }
+  
+  .bg-gradient-animation {
+    background: linear-gradient(45deg, #ff6b6b, #f06595, #b9fbc0, #84fab0);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+  }
+  
+  .pulse-animation {
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  .button-animation {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .button-animation:hover {
+    transform: scale(1.05);
+  }
+  
